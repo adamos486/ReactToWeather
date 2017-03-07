@@ -12214,7 +12214,7 @@ var WeatherForm = React.createClass({
       React.createElement(
         'div',
         null,
-        React.createElement('input', { type: 'text', placeholder: 'Enter State', ref: 'state' })
+        React.createElement('input', { type: 'text', placeholder: 'Enter Place', ref: 'state' })
       ),
       React.createElement(
         'div',
