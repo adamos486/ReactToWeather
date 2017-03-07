@@ -13,7 +13,8 @@ module.exports = {
       Weather: path.resolve(__dirname, 'app/components/Weather.jsx'),
       About: path.resolve(__dirname, 'app/components/About.jsx'),
       Examples: path.resolve(__dirname, 'app/components/Examples.jsx'),
-      WeatherForm: path.resolve(__dirname, 'app/components/WeatherForm.jsx')
+      WeatherForm: path.resolve(__dirname, 'app/components/WeatherForm.jsx'),
+      WeatherMessage: path.resolve(__dirname, 'app/components/WeatherMessage.jsx')
     },
     extensions: ['.js', '.jsx']
   },

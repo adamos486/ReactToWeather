@@ -12109,6 +12109,7 @@ module.exports = Main;
 
 var React = __webpack_require__(5);
 var WeatherForm = __webpack_require__(116);
+var WeatherMessage = __webpack_require__(239);
 
 var Weather = React.createClass({
   displayName: 'Weather',
@@ -12122,7 +12123,8 @@ var Weather = React.createClass({
         null,
         'Weather Component'
       ),
-      React.createElement(WeatherForm, null)
+      React.createElement(WeatherForm, null),
+      React.createElement(WeatherMessage, null)
     );
   }
 });
@@ -26728,6 +26730,33 @@ ReactDOM.render(React.createElement(
     React.createElement(IndexRoute, { component: Weather })
   )
 ), document.getElementById('app'));
+
+/***/ }),
+/* 239 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var React = __webpack_require__(5);
+
+var WeatherMessage = React.createClass({
+  displayName: 'WeatherMessage',
+
+  render: function render() {
+    return React.createElement(
+      'div',
+      null,
+      React.createElement(
+        'h3',
+        null,
+        'It is 51 in San Francisco'
+      )
+    );
+  }
+});
+
+module.exports = WeatherMessage;
 
 /***/ })
 /******/ ]);
