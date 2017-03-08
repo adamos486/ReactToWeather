@@ -12871,20 +12871,28 @@ var Weather = React.createClass({
 
   getInitialState: function getInitialState() {
     return {
-      location: 'San Francisco',
-      temp: 55
+      isLoading: false
     };
   },
   handleSearch: function handleSearch(location) {
     var that = this;
+
+    this.setState({
+      isLoading: true
+    });
+
     //TODO: Convert location to weather temp
     openWeatherMap.getTemp(location).then(function (temp) {
       that.setState({
+        isLoading: false,
         location: location,
         temp: temp
       });
     }).catch(function (error) {
       alert(error);
+      that.setState({
+        isLoading: false
+      });
     });
     this.setState({
       location: location,
@@ -12894,6 +12902,20 @@ var Weather = React.createClass({
   render: function render() {
     var location = this.state.location;
     var temp = this.state.temp;
+    var isLoading = this.state.isLoading;
+
+    function renderMessage() {
+      if (isLoading) {
+        return React.createElement(
+          'h3',
+          null,
+          'Fetching weather...'
+        );
+      } else if (temp && location) {
+        return React.createElement(WeatherMessage, { location: location, temp: temp });
+      }
+    }
+
     return React.createElement(
       'div',
       null,
@@ -12903,7 +12925,7 @@ var Weather = React.createClass({
         'Weather Component'
       ),
       React.createElement(WeatherForm, { onSearch: this.handleSearch }),
-      React.createElement(WeatherMessage, { location: location, temp: temp })
+      renderMessage()
     );
   }
 });

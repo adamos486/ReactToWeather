@@ -7,7 +7,7 @@ const UNITS = 'units=imperial';
 const APP_ID = 'appid=' + process.env.WEATHER_APP_ID;
 
 //create url
-const BASE_URL = OPEN_WEATHER_MAP_URL  + UNITS + '&' + APP_ID + '&' + Q;
+const BASE_URL = OPEN_WEATHER_MAP_URL + UNITS + '&' + APP_ID + '&' + Q;
 
 module.exports = {
   getTemp: function (location) {
