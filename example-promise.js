@@ -47,14 +47,25 @@ function addPromise(a, b) {
   });
 }
 
-addPromise(3, 2).then(function (sum) {
+function resolveAdd(sum) {
   console.log('add success: ' + sum);
-}, function (err) {
-  console.log('add error: ' + err);
-});
+}
 
-addPromise(3, "five").then(function (sum) {
-  console.log('add success: ' + sum);
-}, function (err) {
+function rejectAdd(err) {
   console.log('add error: ' + err);
-});
+}
+
+// addPromise(3, 2).then(function (sum) {
+//   console.log('add success: ' + sum);
+// }, function (err) {
+//   console.log('add error: ' + err);
+// });
+//
+// addPromise(3, "five").then(function (sum) {
+//   console.log('add success: ' + sum);
+// }, function (err) {
+//   console.log('add error: ' + err);
+// });
+
+addPromise(3, 2).then(resolveAdd, rejectAdd);
+addPromise(3, "five").then(resolveAdd, rejectAdd);
