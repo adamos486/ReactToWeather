@@ -1,4 +1,5 @@
 var path = require('path');
+const DotEnv = require('dotenv-webpack');
 
 module.exports = {
   entry: './app/app.jsx',
@@ -14,9 +15,13 @@ module.exports = {
       About: path.resolve(__dirname, 'app/components/About.jsx'),
       Examples: path.resolve(__dirname, 'app/components/Examples.jsx'),
       WeatherForm: path.resolve(__dirname, 'app/components/WeatherForm.jsx'),
-      WeatherMessage: path.resolve(__dirname, 'app/components/WeatherMessage.jsx')
+      WeatherMessage: path.resolve(__dirname, 'app/components/WeatherMessage.jsx'),
+      OpenWeatherMap: path.resolve(__dirname, 'app/api/OpenWeatherMap.jsx')
     },
     extensions: ['.js', '.jsx']
+  },
+  node: {
+    fs: 'empty'
   },
   module: {
     loaders: [
@@ -29,5 +34,11 @@ module.exports = {
         exclude: /(node_modules)/
       }
     ]
-  }
+  },
+  plugins: [
+    new DotEnv({
+      path: path.resolve(__dirname, './.env'),
+      safe: false
+    })
+  ]
 };

@@ -1,5 +1,5 @@
 //http://samples.openweathermap.org/data/2.5/find?q=London&units=imperial
-require('dotenv').config();
+require('dotenv-webpack').config();
 
 var baseUrl = 'http://samples.openweathermap.org/data/2.5/find?q=';
 var query = '';
