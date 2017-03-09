@@ -1,8 +1,26 @@
 var path = require('path');
+var webpack = require('webpack');
 const DotEnv = require('dotenv-webpack');
 
 module.exports = {
-  entry: './app/app.jsx',
+  entry: [
+    'script-loader!jquery/dist/jquery.min.js',
+    'script-loader!foundation-sites/dist/js/foundation.min.js',
+    './app/app.jsx',
+  ],
+  externals: {
+    jquery: 'jQuery'
+  },
+  plugins: [
+    new DotEnv({
+      path: path.resolve(__dirname, './.env'),
+      safe: false
+    }),
+    new webpack.ProvidePlugin({
+      '$': 'jquery',
+      'jQuery': 'jquery'
+    })
+  ],
   output: {
     path: __dirname,
     filename: './public/bundle.js'
@@ -35,11 +53,5 @@ module.exports = {
         exclude: /(node_modules)/
       }
     ]
-  },
-  plugins: [
-    new DotEnv({
-      path: path.resolve(__dirname, './.env'),
-      safe: false
-    })
-  ]
+  }
 };
