@@ -19,7 +19,10 @@ module.exports = {
         if (response.data.cod && response.data.message) {
           throw new Error(response.data.message);
         } else {
-          return response.data.main.temp;
+          return {
+            temp: response.data.main.temp,
+            name: response.data.name
+          };
         }
       })
       .catch(function (error) {

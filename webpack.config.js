@@ -34,7 +34,8 @@ module.exports = {
       Examples: path.resolve(__dirname, 'app/components/Examples.jsx'),
       WeatherForm: path.resolve(__dirname, 'app/components/WeatherForm.jsx'),
       WeatherMessage: path.resolve(__dirname, 'app/components/WeatherMessage.jsx'),
-      OpenWeatherMap: path.resolve(__dirname, 'app/api/OpenWeatherMap.jsx')
+      OpenWeatherMap: path.resolve(__dirname, 'app/api/OpenWeatherMap.jsx'),
+      ErrorModal: path.resolve(__dirname, 'app/components/ErrorModal.jsx')
     },
     extensions: ['.js', '.jsx']
   },
