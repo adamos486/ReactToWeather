@@ -15,7 +15,6 @@ module.exports = {
     var requestUrl = `${BASE_URL + encodedLocation}`;
     return axios.get(requestUrl)
       .then(function (response) {
-        debugger;
         if (response.data.cod && response.data.message) {
           throw new Error(response.data.message);
         } else {
@@ -30,4 +29,3 @@ module.exports = {
       });
   }
 };
-

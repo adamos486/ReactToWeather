@@ -15,10 +15,11 @@ var Weather = React.createClass({
 
     this.setState({
       isLoading: true,
-      errorMessage: undefined
+      errorMessage: undefined,
+      location: undefined,
+      temp: undefined
     });
 
-    //TODO: Convert location to weather temp
     openWeatherMap.getTemp(location)
       .then(function (response) {
         that.setState({
@@ -29,7 +30,6 @@ var Weather = React.createClass({
           errorMessage: undefined
         });
       }).catch(function (error) {
-        debugger;
         that.setState({
           isLoading: false,
           errorMessage: error.message
@@ -39,6 +39,21 @@ var Weather = React.createClass({
       location: location,
       temp: 23
     });
+  },
+  componentDidMount: function() {
+    var locationQuery = this.props.location.query.location;
+    if (locationQuery && locationQuery.length > 0) {
+      this.handleSearch(locationQuery);
+      window.location.hash = '#/';
+    }
+  },
+  componentWillReceiveProps: function (newProps) {
+    debugger;
+    var locationQuery = newProps.location.query.location;
+    if (locationQuery && locationQuery.length > 0) {
+      this.handleSearch(locationQuery);
+      window.location.hash = '#/';
+    }
   },
   render: function () {
     var location = this.state.location;
@@ -56,7 +71,6 @@ var Weather = React.createClass({
     }
 
     function renderError() {
-      debugger;
       if (typeof errorMessage === 'string') {
         return (
           <ErrorModal message={errorMessage}/>
